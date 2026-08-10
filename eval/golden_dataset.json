@@ -1,0 +1,17 @@
+{
+  "_status": "PLACEHOLDER - not yet populated",
+  "_note": "Human-verified ground truth, created from the ACTUAL six-company corpus after Phase 0 download + inspection. This is NOT the same file as questions.json: questions.json is the benchmark question set; golden_dataset.json is what the evaluation harness checks answers against (gold entities, gold relationships, gold source chunk IDs, expected route, hop count). The system under test must never read this file while answering -- only eval/run_benchmark.py reads it.",
+  "_record_shape_example": {
+    "question_id": "Q001",
+    "question": "Which companies does NVIDIA identify as competitors?",
+    "category": "1-hop",
+    "expected_route": "GRAPH",
+    "hop_count": 1,
+    "expected_entities": ["AMD", "Intel"],
+    "expected_relationships": ["COMPETES_WITH"],
+    "gold_chunk_ids": ["NVDA_2026_10K_00123"],
+    "expected_answer_or_criteria": "TBD",
+    "out_of_scope": false
+  },
+  "records": []
+}

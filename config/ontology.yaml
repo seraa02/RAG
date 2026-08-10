@@ -1,0 +1,32 @@
+# Knowledge Graph Ontology — PLACEHOLDER
+#
+# This file is intentionally empty of real content.
+#
+# The final ontology (5-10 entity types, 8-15 relationship types) will be
+# designed in Phase 1, AFTER we have downloaded and manually inspected the
+# six-company 10-K corpus (NVDA, AMD, INTC, MSFT, AMZN, GOOGL).
+#
+# Rationale: an ontology designed before reading the actual source documents
+# is a guess. We want entity/relationship types that reflect what these
+# filings actually say (e.g. competitor mentions, customer/supplier language,
+# acquisitions, regulatory bodies, business segments) rather than a generic
+# schema invented in the abstract.
+#
+# Expected shape once defined (illustrative only — not final):
+#
+# entity_types:
+#   - name: Company
+#     description: ...
+#   - name: Product
+#     description: ...
+#   # ... 5-10 total
+#
+# relationship_types:
+#   - name: COMPETES_WITH
+#     source: Company
+#     target: Company
+#     description: ...
+#   # ... 8-15 total
+
+status: NOT_DEFINED
+defined_in_phase: 1

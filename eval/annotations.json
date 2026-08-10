@@ -1,0 +1,11 @@
+{
+  "_status": "PLACEHOLDER - not yet populated",
+  "_note": "Human verification audit trail for golden_dataset.json records -- who verified each record, when, and any notes on ambiguous cases. Kept separate from golden_dataset.json so the gold records themselves stay a clean, minimal evaluation contract.",
+  "_record_shape_example": {
+    "question_id": "Q001",
+    "verified_by": "TBD",
+    "verified_at": "TBD",
+    "notes": "TBD"
+  },
+  "annotations": []
+}

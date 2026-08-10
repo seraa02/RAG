@@ -1,0 +1,28 @@
+# --- Configuration ---
+python-dotenv>=1.0.0      # load .env into environment variables
+
+# --- Validation ---
+pydantic>=2.6.0            # schema validation (filing metadata, Claude extraction output, etc.)
+
+# --- SEC data acquisition ---
+requests>=2.31.0           # HTTP client for SEC EDGAR
+
+# --- HTML parsing / cleaning ---
+beautifulsoup4>=4.12.0     # deterministic HTML structure parsing
+lxml>=5.1.0                # fast parser backend used by BeautifulSoup
+
+# --- Tokenization (for chunk sizing) ---
+tiktoken>=0.6.0
+
+# --- Knowledge graph ---
+neo4j>=5.17.0               # official Neo4j Python driver
+
+# --- Vector database ---
+psycopg[binary]>=3.1.18     # PostgreSQL driver (psycopg3)
+pgvector>=0.2.5             # Python-side vector type helpers for pgvector
+
+# --- LLM extraction ---
+anthropic>=0.34.0           # Claude API client (entity/relationship extraction)
+
+# --- Testing ---
+pytest>=7.4.0

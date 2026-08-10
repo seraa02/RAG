@@ -1,0 +1,5 @@
+{
+  "_status": "PLACEHOLDER - not yet populated",
+  "_note": "Phase 5 will populate this with 50-100 benchmark questions, stratified by hop count (direct, 1-hop, 2-hop, 3+ hop), aggregation, hybrid, and out-of-scope questions, written against the actual six-company corpus. Development starts with ~20-30 questions. The corresponding gold evidence (expected entities/relationships/chunk IDs/route) lives in golden_dataset.json, not here -- this file is just the question set.",
+  "questions": []
+}

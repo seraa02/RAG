@@ -1,0 +1,31 @@
+services:
+  neo4j:
+    image: neo4j:5-community
+    container_name: rag_neo4j
+    restart: unless-stopped
+    ports:
+      - "7474:7474" # Neo4j Browser (HTTP UI)
+      - "7687:7687" # Bolt protocol (driver connections)
+    environment:
+      NEO4J_AUTH: ${NEO4J_USER:-neo4j}/${NEO4J_PASSWORD:-changeme123}
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: rag_postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-rag_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme123}
+      POSTGRES_DB: ${POSTGRES_DB:-rag_db}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  neo4j_data:
+  neo4j_logs:
+  postgres_data:
