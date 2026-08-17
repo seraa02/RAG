@@ -1,5 +1,26 @@
 {
-  "_status": "PLACEHOLDER - not yet populated",
-  "_note": "Phase 5 will populate this with 50-100 benchmark questions, stratified by hop count (direct, 1-hop, 2-hop, 3+ hop), aggregation, hybrid, and out-of-scope questions, written against the actual six-company corpus. Development starts with ~20-30 questions. The corresponding gold evidence (expected entities/relationships/chunk IDs/route) lives in golden_dataset.json, not here -- this file is just the question set.",
-  "questions": []
+  "_status": "COMPLETE (development tier, 20 items)",
+  "_note": "Question text only. Gold evidence (entities, relationships, expected route, hop count, source quote) lives in golden_dataset.json, keyed by the same id. See eval/annotations.json for verification provenance.",
+  "questions": [
+    { "id": "q001", "question": "Who does AMD compete with in the Data Center segment?" },
+    { "id": "q002", "question": "Does AMD compete with NVIDIA?" },
+    { "id": "q003", "question": "What company did NVIDIA acquire in 2020?" },
+    { "id": "q004", "question": "What company did AMD acquire that led to a tax incentive in Singapore?" },
+    { "id": "q005", "question": "Is Sony a customer of AMD?" },
+    { "id": "q006", "question": "Does AMD depend on Microsoft's support for its products?" },
+    { "id": "q007", "question": "Did NVIDIA announce a partnership with Intel in 2025?" },
+    { "id": "q008", "question": "What regulatory body sued Alphabet over its Search and Search advertising practices?" },
+    { "id": "q009", "question": "What regulatory body is litigating price-fixing and monopolization claims against Amazon?" },
+    { "id": "q010", "question": "What business segments does NVIDIA report?" },
+    { "id": "q011", "question": "What business segments does AMD report?" },
+    { "id": "q012", "question": "How many companies does AMD directly name as competitors in its Data Center segment?" },
+    { "id": "q013", "question": "How many regulatory bodies or antitrust actions are disclosed against Alphabet?" },
+    { "id": "q014", "question": "What is the weather forecast for Santa Clara, California this week?" },
+    { "id": "q015", "question": "What is the CEO of NVIDIA's favorite programming language?" },
+    { "id": "q016", "question": "Which of these six companies has the best coffee in its cafeteria?" },
+    { "id": "q017", "question": "What does NVIDIA's Compute & Networking segment include?" },
+    { "id": "q018", "question": "What is AMD's primary competitor in the supply of CPUs and APUs?" },
+    { "id": "q019", "question": "Who competes with AMD's competitors?" },
+    { "id": "q020", "question": "How is AMD connected to Alphabet?" }
+  ]
 }

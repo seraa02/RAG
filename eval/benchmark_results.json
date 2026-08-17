@@ -1,0 +1,176 @@
+{
+  "overall": {
+    "hybrid_accuracy": 1.0,
+    "vector_only_accuracy": 0.85
+  },
+  "by_difficulty": {
+    "aggregation": {
+      "hybrid_accuracy": 1.0,
+      "vector_only_accuracy": 1.0
+    },
+    "out_of_scope": {
+      "hybrid_accuracy": 1.0,
+      "vector_only_accuracy": 1.0
+    },
+    "single_hop": {
+      "hybrid_accuracy": 1.0,
+      "vector_only_accuracy": 0.8461538461538461
+    },
+    "two_hop": {
+      "hybrid_accuracy": 1.0,
+      "vector_only_accuracy": 0.5
+    }
+  },
+  "latency_ms": {
+    "hybrid_avg": 5374.583797950072,
+    "vector_only_avg": 5524.017335299868
+  },
+  "ingestion_cost": {
+    "chunks_cached": 750,
+    "input_tokens": 2400196,
+    "output_tokens": 484962,
+    "total_cost_usd": 9.65
+  },
+  "per_question": [
+    {
+      "question_id": "q001",
+      "difficulty": "single_hop",
+      "hybrid_correct": true,
+      "hybrid_route": "GRAPH",
+      "vector_only_correct": true
+    },
+    {
+      "question_id": "q002",
+      "difficulty": "single_hop",
+      "hybrid_correct": true,
+      "hybrid_route": "GRAPH",
+      "vector_only_correct": true
+    },
+    {
+      "question_id": "q003",
+      "difficulty": "single_hop",
+      "hybrid_correct": true,
+      "hybrid_route": "GRAPH",
+      "vector_only_correct": true
+    },
+    {
+      "question_id": "q004",
+      "difficulty": "single_hop",
+      "hybrid_correct": true,
+      "hybrid_route": "BOTH",
+      "vector_only_correct": false
+    },
+    {
+      "question_id": "q005",
+      "difficulty": "single_hop",
+      "hybrid_correct": true,
+      "hybrid_route": "GRAPH",
+      "vector_only_correct": false
+    },
+    {
+      "question_id": "q006",
+      "difficulty": "single_hop",
+      "hybrid_correct": true,
+      "hybrid_route": "GRAPH",
+      "vector_only_correct": true
+    },
+    {
+      "question_id": "q007",
+      "difficulty": "single_hop",
+      "hybrid_correct": true,
+      "hybrid_route": "VECTOR",
+      "vector_only_correct": true
+    },
+    {
+      "question_id": "q008",
+      "difficulty": "single_hop",
+      "hybrid_correct": true,
+      "hybrid_route": "VECTOR",
+      "vector_only_correct": true
+    },
+    {
+      "question_id": "q009",
+      "difficulty": "single_hop",
+      "hybrid_correct": true,
+      "hybrid_route": "VECTOR",
+      "vector_only_correct": true
+    },
+    {
+      "question_id": "q010",
+      "difficulty": "single_hop",
+      "hybrid_correct": true,
+      "hybrid_route": "VECTOR",
+      "vector_only_correct": true
+    },
+    {
+      "question_id": "q011",
+      "difficulty": "single_hop",
+      "hybrid_correct": true,
+      "hybrid_route": "VECTOR",
+      "vector_only_correct": true
+    },
+    {
+      "question_id": "q012",
+      "difficulty": "aggregation",
+      "hybrid_correct": true,
+      "hybrid_route": "GRAPH",
+      "vector_only_correct": true
+    },
+    {
+      "question_id": "q013",
+      "difficulty": "aggregation",
+      "hybrid_correct": true,
+      "hybrid_route": "GRAPH",
+      "vector_only_correct": true
+    },
+    {
+      "question_id": "q014",
+      "difficulty": "out_of_scope",
+      "hybrid_correct": true,
+      "hybrid_route": "BOTH",
+      "vector_only_correct": true
+    },
+    {
+      "question_id": "q015",
+      "difficulty": "out_of_scope",
+      "hybrid_correct": true,
+      "hybrid_route": "BOTH",
+      "vector_only_correct": true
+    },
+    {
+      "question_id": "q016",
+      "difficulty": "out_of_scope",
+      "hybrid_correct": true,
+      "hybrid_route": "BOTH",
+      "vector_only_correct": true
+    },
+    {
+      "question_id": "q017",
+      "difficulty": "single_hop",
+      "hybrid_correct": true,
+      "hybrid_route": "VECTOR",
+      "vector_only_correct": true
+    },
+    {
+      "question_id": "q018",
+      "difficulty": "single_hop",
+      "hybrid_correct": true,
+      "hybrid_route": "VECTOR",
+      "vector_only_correct": true
+    },
+    {
+      "question_id": "q019",
+      "difficulty": "two_hop",
+      "hybrid_correct": true,
+      "hybrid_route": "GRAPH",
+      "vector_only_correct": true
+    },
+    {
+      "question_id": "q020",
+      "difficulty": "two_hop",
+      "hybrid_correct": true,
+      "hybrid_route": "GRAPH",
+      "vector_only_correct": false
+    }
+  ]
+}

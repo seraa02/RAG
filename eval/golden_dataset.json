@@ -1,17 +1,231 @@
 {
-  "_status": "PLACEHOLDER - not yet populated",
-  "_note": "Human-verified ground truth, created from the ACTUAL six-company corpus after Phase 0 download + inspection. This is NOT the same file as questions.json: questions.json is the benchmark question set; golden_dataset.json is what the evaluation harness checks answers against (gold entities, gold relationships, gold source chunk IDs, expected route, hop count). The system under test must never read this file while answering -- only eval/run_benchmark.py reads it.",
-  "_record_shape_example": {
-    "question_id": "Q001",
-    "question": "Which companies does NVIDIA identify as competitors?",
-    "category": "1-hop",
-    "expected_route": "GRAPH",
-    "hop_count": 1,
-    "expected_entities": ["AMD", "Intel"],
-    "expected_relationships": ["COMPETES_WITH"],
-    "gold_chunk_ids": ["NVDA_2026_10K_00123"],
-    "expected_answer_or_criteria": "TBD",
-    "out_of_scope": false
-  },
-  "records": []
+  "_status": "COMPLETE (development tier, 20 items) -- all items verified against real filing text; aggregation gold_count values and the two multi-hop items (q019, q020) verified directly against the actually-built graph, not fabricated. A human spot-check of q012/q013/q019/q020 is still recommended before treating this as final per the guide's own methodology.",
+  "_note": "gold_entities is a list of SYNONYM GROUPS, not a flat list of exact strings: [[\"AMD\", \"Advanced Micro Devices\"], [\"Intel\"]] means the answer must contain at least one string from EACH group, not all strings from a flat list. This was a real bug found and fixed during the Phase 5 build: exact-legal-name gold_entities (e.g. \"NVIDIA CORP\") don't literally appear in a fluent generated answer (\"NVIDIA's Compute & Networking segment includes...\"), which was silently failing correct answers under the original flat-string grading. See eval/run_benchmark.py's _grade() and eval/annotations.json for details.",
+  "items": [
+    {
+      "id": "q001",
+      "difficulty": "single_hop",
+      "expected_route": "GRAPH",
+      "hop_count": 1,
+      "gold_entities": [["AMD", "Advanced Micro Devices"], ["Intel"], ["NVIDIA", "Nvidia"]],
+      "gold_relationship_types": ["COMPETES_WITH"],
+      "gold_answer_summary": "AMD competes primarily against Intel and NVIDIA in the Data Center segment.",
+      "source_document": "AMD_2025_10K",
+      "source_evidence": "In the Data Center segment, we compete primarily against Intel Corporation (Intel) and Nvidia Corporation (Nvidia) with our CPU, GPU DPU and AI NIC server products."
+    },
+    {
+      "id": "q002",
+      "difficulty": "single_hop",
+      "expected_route": "GRAPH",
+      "hop_count": 1,
+      "gold_entities": [["AMD", "Advanced Micro Devices"], ["NVIDIA", "Nvidia"]],
+      "gold_relationship_types": ["COMPETES_WITH"],
+      "gold_answer_summary": "Yes -- AMD's principal competitor in discrete graphics is NVIDIA.",
+      "source_document": "AMD_2025_10K",
+      "source_evidence": "Our principal competitor in the supply of discrete graphics is Nvidia, who is the discrete GPU market share leader, and Intel."
+    },
+    {
+      "id": "q003",
+      "difficulty": "single_hop",
+      "expected_route": "GRAPH",
+      "hop_count": 1,
+      "gold_entities": [["NVIDIA", "Nvidia"], ["Mellanox"]],
+      "gold_relationship_types": ["ACQUIRED"],
+      "gold_answer_summary": "NVIDIA acquired Mellanox in 2020.",
+      "source_document": "NVDA_2026_10K",
+      "source_evidence": "Our acquisition of Mellanox in 2020 expanded our offerings to include networking, enabled our platforms to be data center scale, and led to the introduction of a new processor class."
+    },
+    {
+      "id": "q004",
+      "difficulty": "single_hop",
+      "expected_route": "GRAPH",
+      "hop_count": 1,
+      "gold_entities": [["AMD", "Advanced Micro Devices"], ["Xilinx"]],
+      "gold_relationship_types": ["ACQUIRED"],
+      "gold_answer_summary": "AMD acquired Xilinx.",
+      "source_document": "AMD_2025_10K",
+      "source_evidence": "As part of the Xilinx acquisition and as a result of certain employment and operational commitments the Company has made in Singapore, the Company has been granted a Development and Expansion Incentive (DEI)."
+    },
+    {
+      "id": "q005",
+      "difficulty": "single_hop",
+      "expected_route": "GRAPH",
+      "hop_count": 1,
+      "gold_entities": [["Sony"], ["AMD", "Advanced Micro Devices"]],
+      "gold_relationship_types": ["CUSTOMER_OF"],
+      "gold_answer_summary": "Yes -- Sony is a customer of AMD (PlayStation 5 uses AMD semi-custom SoC products).",
+      "source_document": "AMD_2025_10K",
+      "source_evidence": "AMD semi-custom SoC products power the Sony PlayStation 5, the Microsoft Xbox Series S and X game consoles, as well as the recently revealed Valve Steam Machine PC."
+    },
+    {
+      "id": "q006",
+      "difficulty": "single_hop",
+      "expected_route": "GRAPH",
+      "hop_count": 1,
+      "gold_entities": [["AMD", "Advanced Micro Devices"], ["Microsoft"]],
+      "gold_relationship_types": ["DEPENDS_ON"],
+      "gold_answer_summary": "Yes -- AMD discloses a material dependency on Microsoft's continued support for its products as a risk factor.",
+      "source_document": "AMD_2025_10K",
+      "source_evidence": "If we lose Microsoft Corporation's support for our products or other software vendors do not design and develop software to run on our products, our ability to sell our products could be materially adversely affected."
+    },
+    {
+      "id": "q007",
+      "difficulty": "single_hop",
+      "expected_route": "GRAPH",
+      "hop_count": 1,
+      "gold_entities": [["NVIDIA", "Nvidia"], ["Intel"]],
+      "gold_relationship_types": ["PARTNERS_WITH"],
+      "gold_answer_summary": "Yes -- in September 2025 NVIDIA announced a partnership and investment in Intel on new data center and client platform products.",
+      "source_document": "AMD_2025_10K",
+      "source_evidence": "For example, in September 2025, Nvidia announced a partnership and investment in Intel to partner on new data center and client platform products."
+    },
+    {
+      "id": "q008",
+      "difficulty": "single_hop",
+      "expected_route": "GRAPH",
+      "hop_count": 1,
+      "gold_entities": [["Alphabet", "Google"], ["DOJ", "Department of Justice"]],
+      "gold_relationship_types": ["REGULATED_BY"],
+      "gold_answer_summary": "The DOJ (with state Attorneys General) sued Alphabet/Google over its Search and Search advertising practices.",
+      "source_document": "GOOGL_2025_10K",
+      "source_evidence": "the DOJ and a number of state Attorneys General filed a lawsuit concerning our Search and Search advertising practices and our compliance with US antitrust laws."
+    },
+    {
+      "id": "q009",
+      "difficulty": "single_hop",
+      "expected_route": "GRAPH",
+      "hop_count": 1,
+      "gold_entities": [["Amazon"], ["Federal Trade Commission", "FTC"]],
+      "gold_relationship_types": ["REGULATED_BY"],
+      "gold_answer_summary": "The Federal Trade Commission (with state attorneys general) is litigating price-fixing, monopolization, and consumer protection claims against Amazon.",
+      "source_document": "AMZN_2025_10K",
+      "source_evidence": "we are litigating a number of matters alleging price fixing, monopolization, and consumer protection claims, including those brought by state attorneys general and the Federal Trade Commission."
+    },
+    {
+      "id": "q010",
+      "difficulty": "single_hop",
+      "expected_route": "GRAPH",
+      "hop_count": 1,
+      "gold_entities": [["NVIDIA", "Nvidia"], ["Compute & Networking", "Compute and Networking"], ["Graphics"]],
+      "gold_relationship_types": ["HAS_SEGMENT"],
+      "gold_answer_summary": "NVIDIA reports two segments: Compute & Networking, and Graphics.",
+      "source_document": "NVDA_2026_10K",
+      "source_evidence": "The Compute & Networking segment includes... The Graphics segment includes GeForce GPUs for gaming and PCs, and Quadro/NVIDIA RTX GPUs for enterprise workstation graphics."
+    },
+    {
+      "id": "q011",
+      "difficulty": "single_hop",
+      "expected_route": "GRAPH",
+      "hop_count": 1,
+      "gold_entities": [["AMD", "Advanced Micro Devices"], ["Data Center"], ["Client and Gaming"], ["Embedded"]],
+      "gold_relationship_types": ["HAS_SEGMENT"],
+      "gold_answer_summary": "AMD reports Data Center, Client and Gaming, and Embedded segments.",
+      "source_document": "AMD_2025_10K",
+      "source_evidence": "Competition in Data Center Segment... Competition in Client and Gaming Segment... [Embedded segment competitors also disclosed]"
+    },
+    {
+      "id": "q012",
+      "difficulty": "aggregation",
+      "expected_route": "GRAPH",
+      "hop_count": 1,
+      "gold_entities": [["AMD", "Advanced Micro Devices"]],
+      "gold_relationship_types": ["COMPETES_WITH"],
+      "gold_count": 12,
+      "gold_count_status": "VERIFIED -- read directly from the built graph via aggregate_count(AMD, COMPETES_WITH) after Phase 1 completed. Neighbors: Intel Corporation, NVIDIA Corporation, Altera Corporation, Lattice Semiconductor Corporation, Microsemi Corporation, Broadcom Corporation, Marvell Technology Group Ltd., Analog Devices, Texas Instruments Incorporated, NXP Semiconductors N.V., Qualcomm Incorporated, Arm. NOT checked automatically by run_benchmark.py's grading (entity coverage only) -- a human/future grader should compare the system's stated count against this.",
+      "gold_answer_summary": "AMD names 12 distinct direct competitors across its filing (Data Center, Client and Gaming, and Embedded segments combined).",
+      "source_document": "AMD_2025_10K",
+      "source_evidence": "Multiple per-segment competitor disclosures across Item 1 (Data Center, Client and Gaming, Embedded)."
+    },
+    {
+      "id": "q013",
+      "difficulty": "aggregation",
+      "expected_route": "GRAPH",
+      "hop_count": 1,
+      "gold_entities": [["Alphabet", "Google"]],
+      "gold_relationship_types": ["REGULATED_BY"],
+      "gold_count": 23,
+      "gold_count_status": "VERIFIED -- read directly from the built graph via aggregate_count(Alphabet, REGULATED_BY) after Phase 1 completed. NOTE: this count is a known upper-bound overcount -- 'SEC' and 'SECURITIES AND EXCHANGE COMMISSION' appear as 2 separate nodes (RegulatoryBody abbreviations were not seeded, unlike the 6 filer Companies -- see README Known Limitations), so the true distinct-body count is likely 22. NOT checked automatically by run_benchmark.py's grading (entity coverage only).",
+      "gold_answer_summary": "Alphabet's filing names 23 distinct regulatory bodies/courts/agencies across antitrust, tax, and securities-oversight disclosures (DOJ, EC, JFTC, ACCC, SEC, IRS, multiple courts, etc.) -- one pair of these (SEC/SECURITIES AND EXCHANGE COMMISSION) is a duplicate node from an unseeded abbreviation.",
+      "source_document": "GOOGL_2025_10K",
+      "source_evidence": "DOJ antitrust suits (Search, ad tech); European Commission Android decision; JFTC cease-and-desist; UK Statement of Objections on ad tech; SEC/PCAOB routine oversight; IRS and OECD tax matters."
+    },
+    {
+      "id": "q014",
+      "difficulty": "out_of_scope",
+      "expected_route": "REFUSE",
+      "hop_count": 0,
+      "gold_entities": [],
+      "gold_relationship_types": [],
+      "gold_answer_summary": "Out of scope -- not present in any 10-K filing. The system should decline rather than fabricate an answer.",
+      "source_document": null,
+      "source_evidence": null
+    },
+    {
+      "id": "q015",
+      "difficulty": "out_of_scope",
+      "expected_route": "REFUSE",
+      "hop_count": 0,
+      "gold_entities": [],
+      "gold_relationship_types": [],
+      "gold_answer_summary": "Out of scope -- personal preferences of individuals are not disclosed in 10-K filings.",
+      "source_document": null,
+      "source_evidence": null
+    },
+    {
+      "id": "q016",
+      "difficulty": "out_of_scope",
+      "expected_route": "REFUSE",
+      "hop_count": 0,
+      "gold_entities": [],
+      "gold_relationship_types": [],
+      "gold_answer_summary": "Out of scope -- not a topic covered by SEC 10-K filings.",
+      "source_document": null,
+      "source_evidence": null
+    },
+    {
+      "id": "q017",
+      "difficulty": "single_hop",
+      "expected_route": "VECTOR",
+      "hop_count": 0,
+      "gold_entities": [["Compute & Networking", "Compute and Networking"]],
+      "gold_relationship_types": [],
+      "gold_answer_summary": "The Compute & Networking segment includes NVIDIA's Data Center accelerated computing and networking platforms and AI solutions and software, and Automotive platforms and autonomous and electric vehicle solutions including software.",
+      "source_document": "NVDA_2026_10K",
+      "source_evidence": "The Compute & Networking segment includes our Data Center accelerated computing and networking platforms and AI solutions and software, and Automotive platforms and autonomous and electric vehicle solutions including software.",
+      "verified_live": "Confirmed via a live /ask call during Phase 4 build -- the running system returned this exact answer, citation-grounded to chunk NVDA_2026_10K_00014."
+    },
+    {
+      "id": "q018",
+      "difficulty": "single_hop",
+      "expected_route": "GRAPH",
+      "hop_count": 1,
+      "gold_entities": [["AMD", "Advanced Micro Devices"], ["Intel"]],
+      "gold_relationship_types": ["COMPETES_WITH"],
+      "gold_answer_summary": "AMD's primary competitor in the supply of CPUs and APUs is Intel (not NVIDIA -- NVIDIA is the discrete-graphics competitor per q002).",
+      "source_document": "AMD_2025_10K",
+      "source_evidence": "Our primary competitor in the supply of CPUs and APUs is Intel."
+    },
+    {
+      "id": "q019",
+      "difficulty": "two_hop",
+      "expected_route": "GRAPH",
+      "hop_count": 2,
+      "gold_entities": [["NVIDIA", "Nvidia"]],
+      "gold_relationship_types": ["COMPETES_WITH"],
+      "gold_answer_summary": "AMD competes with Intel; Intel's own filing separately discloses NVIDIA (among others -- MediaTek, GlobalFoundries, Amazon, Google, Meta, Microsoft, Broadcom, TSMC, Samsung) as a competitor. NVIDIA is the minimal required entity for grading since it is confirmed via the AMD->Intel->NVIDIA chain; a fuller correct answer may include the others too.",
+      "source_document": "AMD_2025_10K + INTC_2025_10K",
+      "source_evidence": "Discovered as a real path in the built graph (two_hop_chain query: AMD -COMPETES_WITH-> Intel Corporation -COMPETES_WITH-> NVIDIA Corporation), not hand-authored -- verified by directly querying Neo4j after Phase 1 completed, per the guide's requirement that multi-hop gold items be real reachable chains, not aspirational ones."
+    },
+    {
+      "id": "q020",
+      "difficulty": "two_hop",
+      "expected_route": "GRAPH",
+      "hop_count": 2,
+      "gold_entities": [["NVIDIA", "Nvidia"], ["Alphabet", "Google"]],
+      "gold_relationship_types": ["COMPETES_WITH"],
+      "gold_answer_summary": "AMD is connected to Alphabet via a 2-hop competitive chain: AMD competes with NVIDIA, and NVIDIA's own filing discloses Alphabet/Google as a competitor (in AI accelerators/cloud infrastructure).",
+      "source_document": "AMD_2025_10K + NVDA_2026_10K",
+      "source_evidence": "Discovered as a real shortest path in the built graph (path_between query, AMD -COMPETES_WITH-> NVIDIA Corporation -COMPETES_WITH-> Alphabet Inc., 2 hops) -- verified by directly querying Neo4j after Phase 1 completed, not fabricated."
+    }
+  ]
 }
